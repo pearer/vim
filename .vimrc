@@ -39,4 +39,34 @@ set cursorline			" highlight current line
 set tabstop=4			" tab size
 set autoindent			" autoindenting for new line
 set smartindent			" smart autoindent
+set undodir=~/.vim/undo//	" undo dir
+set nobackup			" disable backup
+set noswapfile			" disable swap files
 "-----------------------------------------------------------
+" open maximized
+if has("gui_running")
+  set lines=999 columns=999
+ endif
+"-----------------------------------------------------------
+" nerdtree tuning
+let NERDTreeQuitOnOpen=1	" quit Nerd after opening file
+let NERDTreeShowHidden=1	" show hidden files
+" quit nerdtree with no files
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+"-----------------------------------------------------------
+" Keys mappings
+" disable arrows
+map <up> <nop>
+map <down> <nop>
+map <left> <nop>
+map <right> <nop>
+" c-n for nerdtree
+map <C-n> :NERDTreeToggle<CR>
+" Tab navigation like Firefox.
+nnoremap <C-S-tab> :tabprevious<CR>
+nnoremap <C-tab>   :tabnext<CR>
+nnoremap <C-t>     :tabnew<CR>
+nnoremap <C-q>	   :tabclose<CR>
+inoremap <C-S-tab> <Esc>:tabprevious<CR>i
+inoremap <C-tab>   <Esc>:tabnext<CR>i
+inoremap <C-t>     <Esc>:tabnew<CR>
