@@ -69,4 +69,4 @@ nnoremap <C-t>     :tabnew<CR>
 nnoremap <C-q>	   :tabclose<CR>
 inoremap <C-S-tab> <Esc>:tabprevious<CR>i
 inoremap <C-tab>   <Esc>:tabnext<CR>i
-inoremap <C-t>     <Esc>:tabnew<CR>
+inoremap <C-t>     <Esc>:tabnew<CR>i
