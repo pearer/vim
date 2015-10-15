@@ -22,6 +22,7 @@ filetype plugin indent on    " required
 "-----------------------------------------------------------
 scriptencoding utf-8		" script encoding
 colorscheme molokai		" colorscheme
+set mousehide			" hide mouse while typing
 set laststatus=2		" show line
 set encoding=utf-8		" default encoding
 set number			" show line numbers
