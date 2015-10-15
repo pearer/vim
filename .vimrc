@@ -42,6 +42,7 @@ set smartindent			" smart autoindent
 set undodir=~/.vim/undo//	" undo dir
 set nobackup			" disable backup
 set noswapfile			" disable swap files
+set linespace=0			" set spaces between lines
 "-----------------------------------------------------------
 " open maximized
 if has("gui_running")
@@ -70,3 +71,5 @@ nnoremap <C-q>	   :tabclose<CR>
 inoremap <C-S-tab> <Esc>:tabprevious<CR>i
 inoremap <C-tab>   <Esc>:tabnext<CR>i
 inoremap <C-t>     <Esc>:tabnew<CR>i
+" copy c-c with mouse selection
+vmap <C-c> "+y
