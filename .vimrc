@@ -4,6 +4,7 @@
 "-----------------------------------------------------------
 " fonts patching
 " https://github.com/Lokaltog/vim-powerline/tree/develop/fontpatcher
+" https://github.com/powerline/fonts
 "-----------------------------------------------------------
 " vundle configuration
 "-----------------------------------------------------------
@@ -15,7 +16,7 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'itchyny/lightline.vim'
 Plugin 'tomasr/molokai'
-Bundle 'altercation/vim-colors-solarized'
+Plugin 'sickill/vim-monokai'
 "-----------------------------------------------------------
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -39,6 +40,7 @@ set nowrapscan               " stop search at the end of file
 set ignorecase               " ignore match case
 set cursorline               " highlight current line
 set expandtab                " replace tab with spaces
+set smarttab                 " smart tabbing
 set shiftwidth=4             " 4 space for tab
 set tabstop=4                " tab size
 set autoindent               " autoindenting for new line
@@ -46,6 +48,7 @@ set smartindent              " smart autoindent
 set undodir=~/.vim/undo//    " undo dir
 set nobackup                 " disable backup
 set noswapfile               " disable swap files
+set nowritebackup            " do not make backup file while editing
 set linespace=0              " set spaces between lines
 set mousemodel=popup         " show popup menu at mouse click
 set background=dark          " dark background
@@ -54,9 +57,9 @@ syntax enable                " enable syntax
 "-----------------------------------------------------------
 if has("gui_running")
     set lines=999 columns=999  " maximized window
-    colorscheme molokai        " colorscheme
+    colorscheme molokai        " gui colorscheme
 else
-    colorscheme solarized
+    colorscheme monokai        " terminal coloscheme
 endif
 "-----------------------------------------------------------
 " nerdtree tuning
@@ -73,6 +76,7 @@ map <left> <nop>
 map <right> <nop>
 " c-n for nerdtree
 map <C-n> :NERDTreeToggle<CR>
+map <F3> :NERDTreeToggle<CR>
 " Tab navigation like Firefox.
 nnoremap <C-S-tab> :tabprevious<CR>
 nnoremap <C-tab>   :tabnext<CR>
