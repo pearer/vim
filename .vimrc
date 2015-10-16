@@ -46,6 +46,7 @@ set shiftwidth=4             " 4 space for tab
 set tabstop=4                " tab size
 set autoindent               " autoindenting for new line
 set smartindent              " smart autoindent
+set undofile                 " use undo history
 set undodir=~/.vim/undo//    " undo dir
 set nobackup                 " disable backup
 set noswapfile               " disable swap files
