@@ -24,7 +24,6 @@ call vundle#end()            " required
 filetype plugin indent on    " required
 "-----------------------------------------------------------
 scriptencoding utf-8         " script encoding
-colorscheme molokai          " colorscheme
 set mousehide                " hide mouse while typing
 set laststatus=2             " show line
 set encoding=utf-8           " default encoding
@@ -47,21 +46,22 @@ set tabstop=4                " tab size
 set autoindent               " autoindenting for new line
 set smartindent              " smart autoindent
 set undofile                 " use undo history
-set undodir=~/.vim/undo//    " undo dir
+set undodir=~/.vim/undo/     " undo dir
 set nobackup                 " disable backup
 set noswapfile               " disable swap files
 set nowritebackup            " do not make backup file while editing
 set linespace=0              " set spaces between lines
 set mousemodel=popup         " show popup menu at mouse click
 set background=dark          " dark background
-set list                     " show tabs, eols, etc
 syntax enable                " enable syntax
+set nowrap                   " no wrap
+set paste                    " paste mode
 "-----------------------------------------------------------
 if has("gui_running")
     set lines=999 columns=999  " maximized window
     colorscheme molokai        " gui colorscheme
 else
-    colorscheme monokai        " terminal coloscheme
+    colorscheme monokai        " terminal colorscheme
 endif
 "-----------------------------------------------------------
 " nerdtree tuning
@@ -71,11 +71,6 @@ let NERDTreeShowHidden=1     " show hidden files
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 "-----------------------------------------------------------
 " Keys mappings
-" disable arrows
-map <up> <nop>
-map <down> <nop>
-map <left> <nop>
-map <right> <nop>
 " c-n for nerdtree
 map <C-n> :NERDTreeToggle<CR>
 map <F3> :NERDTreeToggle<CR>
@@ -89,3 +84,7 @@ inoremap <C-tab>   <Esc>:tabnext<CR>i
 inoremap <C-t>     <Esc>:tabnew<CR>i
 " copy c-c with mouse selection
 vmap <C-c> "+y
+"-----------------------------------------------------------
+let g:lightline = {
+      \ 'colorscheme': 'wombat',
+      \ }
