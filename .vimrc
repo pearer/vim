@@ -18,11 +18,15 @@ Plugin 'itchyny/lightline.vim'
 Plugin 'tomasr/molokai'
 Plugin 'sickill/vim-monokai'
 Plugin 'scrooloose/nerdTree'
+Plugin 'christianrondeau/vim-base64'
+Plugin 'fatih/vim-go'
+Plugin 'morhetz/gruvbox'
 "-----------------------------------------------------------
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
 "-----------------------------------------------------------
+set encoding=utf-8
 scriptencoding utf-8         " script encoding
 set mousehide                " hide mouse while typing
 set laststatus=2             " show line
@@ -56,13 +60,17 @@ set background=dark          " dark background
 syntax enable                " enable syntax
 set nowrap                   " no wrap
 set paste                    " paste mode
+set noshowmode               " get rid of the extraneous default vim mode information
 "-----------------------------------------------------------
 if has("gui_running")
     set lines=999 columns=999  " maximized window
-    colorscheme molokai        " gui colorscheme
+    colorscheme gruvbox        " gui colorscheme
 else
-    colorscheme monokai        " terminal colorscheme
+    set t_Co=256
+    colorscheme gruvbox        " terminal colorscheme
 endif
+" install patched Terminus fonts
+set guifont=Terminus\ 16
 "-----------------------------------------------------------
 " nerdtree tuning
 let NERDTreeQuitOnOpen=1     " quit Nerd after opening file
