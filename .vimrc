@@ -22,6 +22,7 @@ Plugin 'christianrondeau/vim-base64'
 Plugin 'fatih/vim-go'
 Plugin 'morhetz/gruvbox'
 Plugin 'taohex/lightline-buffer'
+Plugin 'airblade/vim-gitgutter'
 "-----------------------------------------------------------
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
