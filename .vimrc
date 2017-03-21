@@ -106,7 +106,9 @@ let g:lightline_buffer_reservelen = 20
 "-----------------------------------------------------------
 let g:lightline = {
       \ 'colorscheme': 'wombat',
-    \ 'tabline': {
+      \ 'separator': { 'left': '⮀', 'right': '⮂' },
+      \ 'subseparator': { 'left': '⮁', 'right': '⮃' },
+      \ 'tabline': {
         \ 'left': [ [ 'bufferinfo' ], [ 'bufferbefore', 'buffercurrent', 'bufferafter' ], ],
         \ 'right': [ [ 'close' ], ],
         \ },
@@ -120,5 +122,5 @@ let g:lightline = {
         \ 'bufferbefore': 'lightline#buffer#bufferbefore',
         \ 'bufferafter': 'lightline#buffer#bufferafter',
         \ 'bufferinfo': 'lightline#buffer#bufferinfo',
-        \ },
-      \ }
+       \ },
+	\ }
