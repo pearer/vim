@@ -23,6 +23,7 @@ Plugin 'fatih/vim-go'
 Plugin 'morhetz/gruvbox'
 Plugin 'taohex/lightline-buffer'
 Plugin 'airblade/vim-gitgutter'
+Plugin 'tpope/vim-fugitive'
 "-----------------------------------------------------------
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -123,5 +124,49 @@ let g:lightline = {
         \ 'bufferbefore': 'lightline#buffer#bufferbefore',
         \ 'bufferafter': 'lightline#buffer#bufferafter',
         \ 'bufferinfo': 'lightline#buffer#bufferinfo',
+        \ 'fugitive': 'LightlineFugitive',
+        \ 'readonly': 'LightlineReadonly',
+        \ 'modified': 'LightlineModified',
+        \ 'filename': 'LightlineFilename'
        \ },
+    \ 'active': {
+    \   'left': [ [ 'mode', 'paste' ],
+    \             [ 'fugitive', 'readonly', 'filename', 'modified' ] ]
+    \ },
 	\ }
+
+function! LightlineModified()
+  if &filetype == "help"
+    return ""
+  elseif &modified
+    return "+"
+  elseif &modifiable
+    return ""
+  else
+    return ""
+  endif
+endfunction
+
+function! LightlineReadonly()
+  if &filetype == "help"
+    return ""
+  elseif &readonly
+    return "⭤"
+  else
+    return ""
+  endif
+endfunction
+
+function! LightlineFilename()
+  return ('' != LightlineReadonly() ? LightlineReadonly() . ' ' : '') .
+       \ ('' != pathshorten(expand('%:F')) ? pathshorten(expand('%:F')) : '[No Name]') .
+       \ ('' != LightlineModified() ? ' ' . LightlineModified() : '')
+endfunction
+
+function! LightlineFugitive()
+  if exists("*fugitive#head")
+    let branch = fugitive#head()
+    return branch !=# '' ? '⭠ '.branch : ''
+  endif
+  return ''
+endfunction
