@@ -24,6 +24,8 @@ Plugin 'morhetz/gruvbox'
 Plugin 'taohex/lightline-buffer'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-commentary'
+Plugin 'shinchu/lightline-seoul256.vim'
 "-----------------------------------------------------------
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -64,6 +66,7 @@ syntax enable                " enable syntax
 set nowrap                   " no wrap
 set paste                    " paste mode
 set noshowmode               " get rid of the extraneous default vim mode information
+set autochdir                " change directory
 "-----------------------------------------------------------
 if has("gui_running")
     set lines=999 columns=999  " maximized window
@@ -107,7 +110,7 @@ let g:lightline_buffer_minfextlen = 3
 let g:lightline_buffer_reservelen = 20
 "-----------------------------------------------------------
 let g:lightline = {
-      \ 'colorscheme': 'wombat',
+      \ 'colorscheme': 'seoul256',
       \ 'separator': { 'left': '⮀', 'right': '⮂' },
       \ 'subseparator': { 'left': '⮁', 'right': '⮃' },
       \ 'tabline': {
