@@ -9,6 +9,33 @@
 #
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
+# COLORS
+set $background  #1d2021
+set $foreground  #ebdbb2
+set $black       #282828
+set $darkgrey    #928374
+set $darkred     #cc241d
+set $red         #fb4934
+set $darkgreen   #98971a
+set $green       #b8bb26
+set $darkyellow  #d79921
+set $yellow      #fabd2f
+set $darkblue    #458588
+set $blue        #83a598
+set $darkmagenta #b16286
+set $magenta     #d3869b
+set $darkcyan    #689d6a
+set $cyan        #8ec07c
+set $lightgrey   #a89984
+set $white       #ebdbb2
+
+# class                 border  	background 	text    	indicator 	child_border
+client.focused          $darkgrey 	$foreground $background $foreground
+client.focused_inactive $darkgrey 	$darkgrey 	$foreground $darkgrey
+client.unfocused        $darkgrey 	$darkgrey 	$foreground $darkgrey
+client.urgent           $red 		$red 		$background $red
+
+
 set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
@@ -160,13 +187,22 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 # lock
-bindsym Mod4+l exec i3lock
+bindsym Mod4+l exec i3lock -c 000000
 # lock and suspend
-bindsym Mod4+p exec i3lock & systemctl suspend
+bindsym Mod4+Shift+p exec i3lock -i /home/sergei/Pictures/wall.png & systemctl suspend
+
+# move workspace
+bindsym $mod+Shift+bracketleft move workspace to output left
+bindsym $mod+Shift+bracketright move workspace to output right
 
 
 # set dpi
 exec xrandr --dpi 160
+exec xrandr --output VIRTUAL1 --off --output eDP1 --primary --mode 2560x1440 --pos 0x0 --rotate normal --output DP1 --off --output DP2-1 --off --output DP2-2 --mode 3840x2160 --pos 2560x0 --rotate normal --output DP2-3 --off --output HDMI2 --off --output HDMI1 --off --output DP2 --off
+
+exec --no-startup-id xsetroot -solid "#000000"
+
+#exec xrandr --output DP-1-3-2 --right-of eDP-1-1 --auto
 # network manager applet
 exec --no-startup-id nm-applet
 # disable touchpad
@@ -175,12 +211,23 @@ exec --no-startup-id nm-applet
 exec --no-startup-id pasystray
 
 exec --no-startup-id setxkbmap us,ru -option 'grp:alt_shift_toggle'
-
+exec --no-startup-id gxkb
 #exec --no-startup-id xfce4-panel --disable-wm-check
+exec --no-startup-id classicmenu-indicator
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
         status_command i3status
+    	colors {
+#        	background #32302F
+#	        statusline $foreground
+#    	    separator $darkgrey
+
+#	        focused_workspace  $background $background $foreground
+#	        active_workspace   $background $background $foreground
+#	        inactive_workspace $background $background $darkgrey
+#	        urgent_workspace   $background $background $red
+	    }
 }
 
