@@ -24,8 +24,11 @@ Plugin 'morhetz/gruvbox'
 Plugin 'taohex/lightline-buffer'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'tpope/vim-fugitive'
+Plugin 'tommcdo/vim-fugitive-blame-ext'
 Plugin 'tpope/vim-commentary'
 Plugin 'shinchu/lightline-seoul256.vim'
+Plugin 'nginx.vim'
+Plugin 'kien/ctrlp.vim'
 "-----------------------------------------------------------
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -108,6 +111,11 @@ let g:lightline_buffer_maxfextlen = 3
 let g:lightline_buffer_minflen = 16
 let g:lightline_buffer_minfextlen = 3
 let g:lightline_buffer_reservelen = 20
+"-----------------------------------------------------------
+let g:go_highlight_types = 1
+"-----------------------------------------------------------
+" ctrlp settings
+let g:ctrlp_extensions = ['buffertag', 'tag', 'line', 'dir']
 "-----------------------------------------------------------
 let g:lightline = {
       \ 'colorscheme': 'seoul256',
