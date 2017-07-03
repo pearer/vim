@@ -1,4 +1,3 @@
-"-----------------------------------------------------------
 " vundle installation
 "-----------------------------------------------------------
 " git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
@@ -113,9 +112,10 @@ let g:lightline_buffer_minflen = 16
 let g:lightline_buffer_minfextlen = 3
 let g:lightline_buffer_reservelen = 20
 "-----------------------------------------------------------
+set completeopt-=preview
+"-----------------------------------------------------------
 let g:go_highlight_types = 1
 "-----------------------------------------------------------
-" ctrlp settings
 let g:ctrlp_extensions = ['buffertag', 'tag', 'line', 'dir']
 "-----------------------------------------------------------
 let g:lightline = {
@@ -139,7 +139,7 @@ let g:lightline = {
         \ 'fugitive': 'LightlineFugitive',
         \ 'readonly': 'LightlineReadonly',
         \ 'modified': 'LightlineModified',
-        \ 'filename': 'LightlineFilename'
+        \ 'filename': 'MyFilename'
        \ },
     \ 'active': {
     \   'left': [ [ 'mode', 'paste' ],
@@ -169,16 +169,15 @@ function! LightlineReadonly()
   endif
 endfunction
 
-function! LightlineFilename()
-  return ('' != LightlineReadonly() ? LightlineReadonly() . ' ' : '') .
-       \ ('' != pathshorten(expand('%:F')) ? pathshorten(expand('%:F')) : '[No Name]') .
-       \ ('' != LightlineModified() ? ' ' . LightlineModified() : '')
-endfunction
-
 function! LightlineFugitive()
   if exists("*fugitive#head")
     let branch = fugitive#head()
     return branch !=# '' ? '⭠ '.branch : ''
   endif
   return ''
+endfunction
+
+function! MyFilename()
+  return ('' != LightlineReadonly() ? LightlineReadonly() . ' ' : '') .
+       \ ('' != expand('%:p') ? expand('%:p') : '[NoName]')
 endfunction
