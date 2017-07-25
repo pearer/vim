@@ -29,6 +29,8 @@ Plugin 'tpope/vim-commentary'
 Plugin 'shinchu/lightline-seoul256.vim'
 Plugin 'nginx.vim'
 Plugin 'kien/ctrlp.vim'
+Plugin 'vim-scripts/Align'
+Plugin 'vim-scripts/SQLUtilities'
 "-----------------------------------------------------------
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -167,6 +169,12 @@ function! LightlineReadonly()
   else
     return ""
   endif
+endfunction
+
+function! LightlineFilename()
+  return ('' != LightlineReadonly() ? LightlineReadonly() . ' ' : '') .
+       \ ('' != pathshorten(expand('%:F')) ? pathshorten(expand('%:F')) : '[No Name]') .
+       \ ('' != LightlineModified() ? ' ' . LightlineModified() : '')
 endfunction
 
 function! LightlineFugitive()
