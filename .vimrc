@@ -16,7 +16,6 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'itchyny/lightline.vim'
 Plugin 'tomasr/molokai'
-Plugin 'sickill/vim-monokai'
 Plugin 'scrooloose/nerdTree'
 Plugin 'christianrondeau/vim-base64'
 Plugin 'fatih/vim-go'
@@ -31,6 +30,8 @@ Plugin 'nginx.vim'
 Plugin 'kien/ctrlp.vim'
 Plugin 'vim-scripts/Align'
 Plugin 'vim-scripts/SQLUtilities'
+Plugin 'nsf/gocode', {'rtp': 'vim/'}
+Plugin 'Shougo/neocomplete.vim'
 "-----------------------------------------------------------
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -69,7 +70,6 @@ set mousemodel=popup         " show popup menu at mouse click
 set background=dark          " dark background
 syntax enable                " enable syntax
 set nowrap                   " no wrap
-set paste                    " paste mode
 set noshowmode               " get rid of the extraneous default vim mode information
 set autochdir                " change directory
 "-----------------------------------------------------------
@@ -82,6 +82,9 @@ else
 endif
 " install patched Terminus fonts
 set guifont=Terminus\ 16
+"----------------------------------------------------------
+autocmd BufRead,BufNewFile *.md setlocal spell
+autocmd FileType gitcommit setlocal spell
 "-----------------------------------------------------------
 " nerdtree tuning
 let NERDTreeQuitOnOpen=1     " quit Nerd after opening file
@@ -115,6 +118,14 @@ let g:lightline_buffer_minfextlen = 3
 let g:lightline_buffer_reservelen = 20
 "-----------------------------------------------------------
 set completeopt-=preview
+"-----------------------------------------------------------
+let g:acp_enableAtStartup = 0
+" Use neocomplete.
+let g:neocomplete#enable_at_startup = 1
+" Use smartcase.
+let g:neocomplete#enable_smart_case = 1
+" Set minimum syntax keyword length.
+let g:neocomplete#sources#syntax#min_keyword_length = 3
 "-----------------------------------------------------------
 let g:go_highlight_types = 1
 "-----------------------------------------------------------
