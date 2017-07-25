@@ -1,3 +1,4 @@
+"-----------------------------------------------------------
 " vundle installation
 "-----------------------------------------------------------
 " git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
@@ -13,25 +14,24 @@ filetype off                       " required
 set rtp+=~/.vim/bundle/Vundle.vim  " set the runtime path
 call vundle#begin()
 "-----------------------------------------------------------
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'itchyny/lightline.vim'
-Plugin 'tomasr/molokai'
-Plugin 'scrooloose/nerdTree'
-Plugin 'christianrondeau/vim-base64'
-Plugin 'fatih/vim-go'
-Plugin 'morhetz/gruvbox'
-Plugin 'taohex/lightline-buffer'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tommcdo/vim-fugitive-blame-ext'
-Plugin 'tpope/vim-commentary'
-Plugin 'shinchu/lightline-seoul256.vim'
-Plugin 'nginx.vim'
-Plugin 'kien/ctrlp.vim'
-Plugin 'vim-scripts/Align'
-Plugin 'vim-scripts/SQLUtilities'
-Plugin 'nsf/gocode', {'rtp': 'vim/'}
-Plugin 'Shougo/neocomplete.vim'
+Plugin 'VundleVim/Vundle.vim'           " plugin manager
+Plugin 'itchyny/lightline.vim'          " status bar
+Plugin 'scrooloose/nerdTree'            " filemanager
+Plugin 'christianrondeau/vim-base64'    " base64 encoding/decoding
+Plugin 'fatih/vim-go'                   " go language support
+Plugin 'morhetz/gruvbox'                " colorscheme
+Plugin 'taohex/lightline-buffer'        " show tabs for buffers
+Plugin 'airblade/vim-gitgutter'         " show git modified lines
+Plugin 'tpope/vim-fugitive'             " git integration
+Plugin 'tommcdo/vim-fugitive-blame-ext' " git blame extension
+Plugin 'tpope/vim-commentary'           " comments
+Plugin 'shinchu/lightline-seoul256.vim' " lightline colorscheme
+Plugin 'nginx.vim'                      " nginx configuration support
+Plugin 'kien/ctrlp.vim'                 " search in files
+Plugin 'vim-scripts/Align'              " align text plugin
+Plugin 'vim-scripts/SQLUtilities'       " sql utils
+Plugin 'nsf/gocode', {'rtp': 'vim/'}    " gocode support
+Plugin 'Shougo/neocomplete.vim'         " autocomplete
 "-----------------------------------------------------------
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -77,12 +77,14 @@ if has("gui_running")
     set lines=999 columns=999  " maximized window
     colorscheme gruvbox        " gui colorscheme
 else
-    set t_Co=256
+    set t_Co=256               " enable 256 colors
     colorscheme gruvbox        " terminal colorscheme
 endif
+"-----------------------------------------------------------
 " install patched Terminus fonts
+"-----------------------------------------------------------
 set guifont=Terminus\ 16
-"----------------------------------------------------------
+"-----------------------------------------------------------
 autocmd BufRead,BufNewFile *.md setlocal spell
 autocmd FileType gitcommit setlocal spell
 "-----------------------------------------------------------
