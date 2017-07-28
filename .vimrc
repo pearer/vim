@@ -101,6 +101,14 @@ map <F3> :NERDTreeToggle<CR>
 " copy c-c with mouse selection
 vmap <C-c> "+y
 "-----------------------------------------------------------
+" Text Bubbling
+" " Bubble single lines
+nmap <C-Up> ddkP
+nmap <C-Down> ddp
+" " Bubble multiple lines
+vmap <C-Up> xkP`[V`]
+vmap <C-Down> xp`[V`]
+"-----------------------------------------------------------
 " tabline settings
 set showtabline=2   " always show tabline
 " remap arrow keys
@@ -154,13 +162,13 @@ let g:lightline = {
         \ 'fugitive': 'LightlineFugitive',
         \ 'readonly': 'LightlineReadonly',
         \ 'modified': 'LightlineModified',
-        \ 'filename': 'MyFilename'
-       \ },
+        \ 'filename': 'LightlineFilename'
+        \ },
     \ 'active': {
     \   'left': [ [ 'mode', 'paste' ],
     \             [ 'fugitive', 'readonly', 'filename', 'modified' ] ]
     \ },
-	\ }
+    \ }
 
 function! LightlineModified()
   if &filetype == "help"
@@ -198,7 +206,7 @@ function! LightlineFugitive()
   return ''
 endfunction
 
-function! MyFilename()
+function! LightlineFilename()
   return ('' != LightlineReadonly() ? LightlineReadonly() . ' ' : '') .
        \ ('' != expand('%:p') ? expand('%:p') : '[NoName]')
 endfunction
