@@ -32,6 +32,8 @@ Plugin 'vim-scripts/Align'              " align text plugin
 Plugin 'vim-scripts/SQLUtilities'       " sql utils
 Plugin 'nsf/gocode', {'rtp': 'vim/'}    " gocode support
 Plugin 'Shougo/neocomplete.vim'         " autocomplete
+Plugin 'Xuyuanp/nerdtree-git-plugin'	" show modified files in nerdtree
+Plugin 'mhinz/vim-startify'				" startup screen
 "-----------------------------------------------------------
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
