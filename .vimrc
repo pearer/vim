@@ -34,6 +34,7 @@ Plugin 'nsf/gocode', {'rtp': 'vim/'}    " gocode support
 Plugin 'Shougo/neocomplete.vim'         " autocomplete
 Plugin 'Xuyuanp/nerdtree-git-plugin'	" show modified files in nerdtree
 Plugin 'mhinz/vim-startify'				" startup screen
+Plugin 'terryma/vim-smooth-scroll'
 "-----------------------------------------------------------
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -116,6 +117,11 @@ set showtabline=2   " always show tabline
 " remap arrow keys
 nnoremap <Left> :bprev<CR>
 nnoremap <Right> :bnext<CR>
+"-------------------------------------------------------------------
+noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
+noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
+noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 0, 4)<CR>
+noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
 " ligghtline-buffer ui settings
 " lightline-buffer function settings
 let g:lightline_buffer_show_bufnr = 1
