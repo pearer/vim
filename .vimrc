@@ -30,11 +30,10 @@ Plugin 'nginx.vim'                      " nginx configuration support
 Plugin 'kien/ctrlp.vim'                 " search in files
 Plugin 'vim-scripts/Align'              " align text plugin
 Plugin 'vim-scripts/SQLUtilities'       " sql utils
-Plugin 'nsf/gocode', {'rtp': 'vim/'}    " gocode support
 Plugin 'Shougo/neocomplete.vim'         " autocomplete
 Plugin 'Xuyuanp/nerdtree-git-plugin'	" show modified files in nerdtree
 Plugin 'mhinz/vim-startify'				" startup screen
-Plugin 'terryma/vim-smooth-scroll'
+Plugin 'terryma/vim-smooth-scroll'      " smooth scroll
 "-----------------------------------------------------------
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -104,13 +103,16 @@ map <F3> :NERDTreeToggle<CR>
 " copy c-c with mouse selection
 vmap <C-c> "+y
 "-----------------------------------------------------------
-" Text Bubbling
-" " Bubble single lines
+" text Bubbling
+" bubble single lines
 nmap <C-Up> ddkP
 nmap <C-Down> ddp
-" " Bubble multiple lines
+" bubble multiple lines
 vmap <C-Up> xkP`[V`]
 vmap <C-Down> xp`[V`]
+"-----------------------------------------------------------
+" Delete buffer
+nmap <C-S-x> :bd<CR>
 "-----------------------------------------------------------
 " tabline settings
 set showtabline=2   " always show tabline
@@ -118,6 +120,7 @@ set showtabline=2   " always show tabline
 nnoremap <Left> :bprev<CR>
 nnoremap <Right> :bnext<CR>
 "-------------------------------------------------------------------
+" smooth scroll
 noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
 noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
 noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 0, 4)<CR>
@@ -146,6 +149,7 @@ let g:neocomplete#enable_smart_case = 1
 let g:neocomplete#sources#syntax#min_keyword_length = 3
 "-----------------------------------------------------------
 let g:go_highlight_types = 1
+let g:go_auto_type_info = 1
 "-----------------------------------------------------------
 let g:ctrlp_extensions = ['buffertag', 'tag', 'line', 'dir']
 "-----------------------------------------------------------
