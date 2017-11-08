@@ -20,11 +20,12 @@ Plugin 'scrooloose/nerdTree'            " filemanager
 Plugin 'christianrondeau/vim-base64'    " base64 encoding/decoding
 Plugin 'fatih/vim-go'                   " go language support
 Plugin 'morhetz/gruvbox'                " colorscheme
-Plugin 'taohex/lightline-buffer'        " show tabs for buffers
+Plugin 'vim-ctrlspace/vim-ctrlspace'    " buffer selector
 Plugin 'airblade/vim-gitgutter'         " show git modified lines
 Plugin 'tpope/vim-fugitive'             " git integration
 Plugin 'tommcdo/vim-fugitive-blame-ext' " git blame extension
 Plugin 'tpope/vim-commentary'           " comments
+Plugin 'tpope/vim-rhubarb.git'          " browse github
 Plugin 'shinchu/lightline-seoul256.vim' " lightline colorscheme
 Plugin 'nginx.vim'                      " nginx configuration support
 Plugin 'kien/ctrlp.vim'                 " search in files
@@ -34,6 +35,7 @@ Plugin 'Shougo/neocomplete.vim'         " autocomplete
 Plugin 'Xuyuanp/nerdtree-git-plugin'	" show modified files in nerdtree
 Plugin 'mhinz/vim-startify'				" startup screen
 Plugin 'terryma/vim-smooth-scroll'      " smooth scroll
+Plugin 'mileszs/ack.vim'                " grep replacement
 "-----------------------------------------------------------
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -74,6 +76,8 @@ syntax enable                " enable syntax
 set nowrap                   " no wrap
 set noshowmode               " get rid of the extraneous default vim mode information
 set autochdir                " change directory
+set hidden                   " hides buffer
+set showtabline=0            " use ctrl space
 "-----------------------------------------------------------
 if has("gui_running")
     set lines=999 columns=999  " maximized window
@@ -110,33 +114,15 @@ nmap <C-Down> ddp
 " bubble multiple lines
 vmap <C-Up> xkP`[V`]
 vmap <C-Down> xp`[V`]
-"-----------------------------------------------------------
+"------------------------------------------------------------
 " Delete buffer
 nmap <C-S-x> :bd<CR>
-"-----------------------------------------------------------
-" tabline settings
-set showtabline=2   " always show tabline
-" remap arrow keys
-nnoremap <Left> :bprev<CR>
-nnoremap <Right> :bnext<CR>
-"-------------------------------------------------------------------
+"------------------------------------------------------------
 " smooth scroll
 noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
 noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
 noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 0, 4)<CR>
 noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
-" ligghtline-buffer ui settings
-" lightline-buffer function settings
-let g:lightline_buffer_show_bufnr = 1
-let g:lightline_buffer_rotate = 0
-let g:lightline_buffer_fname_mod = ':t'
-let g:lightline_buffer_excludes = ['vimfiler']
-
-let g:lightline_buffer_maxflen = 30
-let g:lightline_buffer_maxfextlen = 3
-let g:lightline_buffer_minflen = 16
-let g:lightline_buffer_minfextlen = 3
-let g:lightline_buffer_reservelen = 20
 "-----------------------------------------------------------
 set completeopt-=preview
 "-----------------------------------------------------------
