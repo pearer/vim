@@ -25,17 +25,16 @@ Plugin 'airblade/vim-gitgutter'         " show git modified lines
 Plugin 'tpope/vim-fugitive'             " git integration
 Plugin 'tommcdo/vim-fugitive-blame-ext' " git blame extension
 Plugin 'tpope/vim-commentary'           " comments
-Plugin 'tpope/vim-rhubarb.git'          " browse github
 Plugin 'shinchu/lightline-seoul256.vim' " lightline colorscheme
 Plugin 'nginx.vim'                      " nginx configuration support
 Plugin 'kien/ctrlp.vim'                 " search in files
-Plugin 'vim-scripts/Align'              " align text plugin
-Plugin 'vim-scripts/SQLUtilities'       " sql utils
 Plugin 'Shougo/neocomplete.vim'         " autocomplete
 Plugin 'Xuyuanp/nerdtree-git-plugin'	" show modified files in nerdtree
 Plugin 'mhinz/vim-startify'				" startup screen
 Plugin 'terryma/vim-smooth-scroll'      " smooth scroll
 Plugin 'mileszs/ack.vim'                " grep replacement
+Plugin 'gregsexton/gitv'                " gitk for vim
+Plugin 'jiangmiao/auto-pairs'           " auto pairing parenthesis
 "-----------------------------------------------------------
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -78,6 +77,7 @@ set noshowmode               " get rid of the extraneous default vim mode inform
 set autochdir                " change directory
 set hidden                   " hides buffer
 set showtabline=0            " use ctrl space
+let &colorcolumn="80,".join(range(120,999),",")
 "-----------------------------------------------------------
 if has("gui_running")
     set lines=999 columns=999  " maximized window
@@ -136,6 +136,7 @@ let g:neocomplete#sources#syntax#min_keyword_length = 3
 "-----------------------------------------------------------
 let g:go_highlight_types = 1
 let g:go_auto_type_info = 1
+let g:go_def_mode = "godef"
 "-----------------------------------------------------------
 let g:ctrlp_extensions = ['buffertag', 'tag', 'line', 'dir']
 "-----------------------------------------------------------
