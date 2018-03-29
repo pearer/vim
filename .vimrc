@@ -27,7 +27,6 @@ Plugin 'tommcdo/vim-fugitive-blame-ext' " git blame extension
 Plugin 'tpope/vim-commentary'           " comments
 Plugin 'shinchu/lightline-seoul256.vim' " lightline colorscheme
 Plugin 'nginx.vim'                      " nginx configuration support
-Plugin 'kien/ctrlp.vim'                 " search in files
 Plugin 'Shougo/neocomplete.vim'         " autocomplete
 Plugin 'Xuyuanp/nerdtree-git-plugin'	" show modified files in nerdtree
 Plugin 'mhinz/vim-startify'				" startup screen
@@ -40,6 +39,7 @@ Plugin 'jiangmiao/auto-pairs'           " auto pairing parenthesis
 call vundle#end()            " required
 filetype plugin indent on    " required
 "-----------------------------------------------------------
+set clipboard=unnamed
 set encoding=utf-8
 scriptencoding utf-8         " script encoding
 set mousehide                " hide mouse while typing
@@ -78,6 +78,8 @@ set autochdir                " change directory
 set hidden                   " hides buffer
 set showtabline=0            " use ctrl space
 let &colorcolumn="80,".join(range(120,999),",")
+set backspace=indent,eol,start
+set updatetime=100
 "-----------------------------------------------------------
 if has("gui_running")
     set lines=999 columns=999  " maximized window
@@ -90,6 +92,7 @@ endif
 " install patched Terminus fonts
 "-----------------------------------------------------------
 set guifont=Terminus\ 16
+set gfn=Terminus\ 16
 "-----------------------------------------------------------
 autocmd BufRead,BufNewFile *.md setlocal spell
 autocmd FileType gitcommit setlocal spell
@@ -103,9 +106,11 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTree
 " Keys mappings
 " c-n for nerdtree
 map <C-n> :NERDTreeToggle<CR>
-map <F3> :NERDTreeToggle<CR>
 " copy c-c with mouse selection
 vmap <C-c> "+y
+"-----------------------------------------------------------
+" Highlight changes with gitgutter
+map <C-S-g> :GitGutterLineHighlightsToggle<CR>
 "-----------------------------------------------------------
 " text Bubbling
 " bubble single lines
@@ -115,6 +120,8 @@ nmap <C-Down> ddp
 vmap <C-Up> xkP`[V`]
 vmap <C-Down> xp`[V`]
 "------------------------------------------------------------
+nmap <S-Enter> i<CR><ESC>
+"------------------------------------------------------------
 " Delete buffer
 nmap <C-S-x> :bd<CR>
 "------------------------------------------------------------
@@ -123,6 +130,8 @@ noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
 noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
 noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 0, 4)<CR>
 noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
+"-----------------------------------------------------------
+nnoremap <leader>r :redr!<CR>
 "-----------------------------------------------------------
 set completeopt-=preview
 "-----------------------------------------------------------
@@ -134,11 +143,13 @@ let g:neocomplete#enable_smart_case = 1
 " Set minimum syntax keyword length.
 let g:neocomplete#sources#syntax#min_keyword_length = 3
 "-----------------------------------------------------------
-let g:go_highlight_types = 1
-let g:go_auto_type_info = 1
-let g:go_def_mode = "godef"
+" let g:go_highlight_types = 1
+" let g:go_auto_type_info = 1
+" let g:go_def_mode = "godef"
 "-----------------------------------------------------------
 let g:ctrlp_extensions = ['buffertag', 'tag', 'line', 'dir']
+"-----------------------------------------------------------
+set omnifunc=syntaxcomplete#Complete
 "-----------------------------------------------------------
 let g:lightline = {
       \ 'colorscheme': 'seoul256',
