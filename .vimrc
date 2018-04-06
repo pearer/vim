@@ -120,6 +120,11 @@ nmap <C-Down> ddp
 vmap <C-Up> xkP`[V`]
 vmap <C-Down> xp`[V`]
 "------------------------------------------------------------
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+"------------------------------------------------------------
 nmap <S-Enter> i<CR><ESC>
 "------------------------------------------------------------
 " Delete buffer
