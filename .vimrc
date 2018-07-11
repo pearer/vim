@@ -34,6 +34,7 @@ Plugin 'terryma/vim-smooth-scroll'      " smooth scroll
 Plugin 'mileszs/ack.vim'                " grep replacement
 Plugin 'gregsexton/gitv'                " gitk for vim
 Plugin 'jiangmiao/auto-pairs'           " auto pairing parenthesis
+Plugin 'rking/ag.vim'                   " silver searcher
 "-----------------------------------------------------------
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -103,6 +104,8 @@ let NERDTreeShowHidden=1     " show hidden files
 " quit nerdtree with no files
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 "-----------------------------------------------------------
+let g:ag_working_path_mode="r"
+"-----------------------------------------------------------
 " Keys mappings
 " c-n for nerdtree
 map <C-n> :NERDTreeToggle<CR>
@@ -126,6 +129,9 @@ nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 "------------------------------------------------------------
 nmap <S-Enter> i<CR><ESC>
+"------------------------------------------------------------
+" make redo more natural with U
+nnoremap U <C-R>
 "------------------------------------------------------------
 " Delete buffer
 nmap <C-S-x> :bd<CR>
