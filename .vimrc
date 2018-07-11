@@ -15,7 +15,8 @@ set rtp+=~/.vim/bundle/Vundle.vim  " set the runtime path
 call vundle#begin()
 "-----------------------------------------------------------
 Plugin 'VundleVim/Vundle.vim'           " plugin manager
-Plugin 'itchyny/lightline.vim'          " status bar
+" Plugin 'itchyny/lightline.vim'          " status bar
+Plugin 'vim-airline/vim-airline'        " status line
 Plugin 'scrooloose/nerdTree'            " filemanager
 Plugin 'christianrondeau/vim-base64'    " base64 encoding/decoding
 Plugin 'fatih/vim-go'                   " go language support
@@ -95,6 +96,9 @@ endif
 set guifont=Terminus\ 16
 set gfn=Terminus\ 16
 "-----------------------------------------------------------
+let g:airline_powerline_fonts = 1
+let NERDTreeStatusline="%{matchstr(getline('.'), '\\s\\zs\\w\\(.*\\)')}"
+"-----------------------------------------------------------
 autocmd BufRead,BufNewFile *.md setlocal spell
 autocmd FileType gitcommit setlocal spell
 "-----------------------------------------------------------
@@ -162,72 +166,3 @@ let g:ctrlp_extensions = ['buffertag', 'tag', 'line', 'dir']
 "-----------------------------------------------------------
 set omnifunc=syntaxcomplete#Complete
 "-----------------------------------------------------------
-let g:lightline = {
-      \ 'colorscheme': 'seoul256',
-      \ 'separator': { 'left': '⮀', 'right': '⮂' },
-      \ 'subseparator': { 'left': '⮁', 'right': '⮃' },
-      \ 'tabline': {
-        \ 'left': [ [ 'bufferinfo' ], [ 'bufferbefore', 'buffercurrent', 'bufferafter' ], ],
-        \ 'right': [ [ 'close' ], ],
-        \ },
-    \ 'component_expand': {
-        \ 'buffercurrent': 'lightline#buffer#buffercurrent2',
-        \ },
-    \ 'component_type': {
-        \ 'buffercurrent': 'tabsel',
-        \ },
-    \ 'component_function': {
-        \ 'bufferbefore': 'lightline#buffer#bufferbefore',
-        \ 'bufferafter': 'lightline#buffer#bufferafter',
-        \ 'bufferinfo': 'lightline#buffer#bufferinfo',
-        \ 'fugitive': 'LightlineFugitive',
-        \ 'readonly': 'LightlineReadonly',
-        \ 'modified': 'LightlineModified',
-        \ 'filename': 'LightlineFilename'
-        \ },
-    \ 'active': {
-    \   'left': [ [ 'mode', 'paste' ],
-    \             [ 'fugitive', 'readonly', 'filename', 'modified' ] ]
-    \ },
-    \ }
-
-function! LightlineModified()
-  if &filetype == "help"
-    return ""
-  elseif &modified
-    return "+"
-  elseif &modifiable
-    return ""
-  else
-    return ""
-  endif
-endfunction
-
-function! LightlineReadonly()
-  if &filetype == "help"
-    return ""
-  elseif &readonly
-    return "⭤"
-  else
-    return ""
-  endif
-endfunction
-
-function! LightlineFilename()
-  return ('' != LightlineReadonly() ? LightlineReadonly() . ' ' : '') .
-       \ ('' != pathshorten(expand('%:F')) ? pathshorten(expand('%:F')) : '[No Name]') .
-       \ ('' != LightlineModified() ? ' ' . LightlineModified() : '')
-endfunction
-
-function! LightlineFugitive()
-  if exists("*fugitive#head")
-    let branch = fugitive#head()
-    return branch !=# '' ? '⭠ '.branch : ''
-  endif
-  return ''
-endfunction
-
-function! LightlineFilename()
-  return ('' != LightlineReadonly() ? LightlineReadonly() . ' ' : '') .
-       \ ('' != expand('%:p') ? expand('%:p') : '[NoName]')
-endfunction
